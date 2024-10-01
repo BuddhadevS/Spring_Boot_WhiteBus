@@ -1,18 +1,66 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Enter Otp</title>
+    <meta charset="ISO-8859-1">
+    <title>Enter Otp</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h3 {
+            color: #333;
+        }
+
+        form {
+            margin: 20px 0;
+        }
+
+        input[type="number"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 10px;
+            text-decoration: none;
+            color: #007BFF;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-<h3 th:text="${session.successMessage}"></h3>
-<h3 th:text="${session.failMessage}"></h3>
-<th:block th:text="${@sessionMessageRemover.removeSessionMessage()}"></th:block>
-	<form action="/agency/verify-otp" method="post">
-		Enter Otp:<input type="number" name="otp"> <input
-			type="hidden" name="id" th:value="${id}">
-		<button>submit</button>
-	</form>
-	<a th:href="'/agency/resend-otp/'+${id}">Resend Otp</a>
+    <h3 th:text="${session.successMessage}"></h3>
+    <h3 th:text="${session.failMessage}"></h3>
+    <th:block th:text="${@sessionMessageRemover.removeSessionMessage()}"></th:block>
+    <form action="/agency/verify-otp" method="post">
+        Enter Otp: <input type="number" name="otp"> 
+        <input type="hidden" name="id" th:value="${id}">
+        <button type="submit">Submit</button>
+    </form>
+    <a th:href="'/agency/resend-otp/'+${id}">Resend Otp</a>
 </body>
 </html>
